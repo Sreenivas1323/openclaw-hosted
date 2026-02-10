@@ -1,0 +1,255 @@
+/* ═══════════════════════════════════════════
+   OpenClaw Hosted — Custom Styles
+   Beyond what Tailwind provides
+   ═══════════════════════════════════════════ */
+
+/* ─── Base ─── */
+::selection {
+  background: rgba(0, 212, 255, 0.25);
+  color: #fff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Navigation blur ─── */
+.nav-blur {
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  background: rgba(10, 10, 10, 0.8);
+}
+
+/* ─── Gradient text ─── */
+.text-gradient {
+  background: linear-gradient(135deg, #00d4ff 0%, #0094ff 50%, #a855f7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Hero background glow ─── */
+.hero-glow {
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 600px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 212, 255, 0.08) 0%,
+    rgba(0, 148, 255, 0.04) 30%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Subtle grid background ─── */
+.grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Pricing section glow ─── */
+.pricing-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 212, 255, 0.06) 0%,
+    transparent 60%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── CTA section glow ─── */
+.cta-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 300px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 212, 255, 0.05) 0%,
+    transparent 60%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Pricing card highlight ─── */
+.pricing-highlight {
+  position: relative;
+}
+
+.pricing-highlight::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(0, 148, 255, 0.05), rgba(168, 85, 247, 0.1));
+  z-index: -1;
+  opacity: 0.5;
+}
+
+.pricing-highlight::after {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 200px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 212, 255, 0.1) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ─── Feature card hover glow ─── */
+.feature-card {
+  transition: transform 0.3s ease, border-color 0.5s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-2px);
+}
+
+/* ─── FAQ Accordion ─── */
+.faq-item {
+  transition: border-color 0.3s ease;
+}
+
+.faq-item:hover {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.faq-toggle {
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.faq-toggle:focus-visible {
+  outline: 2px solid rgba(0, 212, 255, 0.5);
+  outline-offset: -2px;
+  border-radius: 0.75rem;
+}
+
+.faq-icon {
+  transition: transform 0.3s ease;
+}
+
+.faq-item.open .faq-icon {
+  transform: rotate(45deg);
+}
+
+.faq-content {
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  max-height: 0;
+  opacity: 0;
+}
+
+.faq-item.open .faq-content {
+  max-height: 500px;
+  opacity: 1;
+}
+
+/* ─── Fade-in animations ─── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children */
+.fade-in:nth-child(1) { transition-delay: 0ms; }
+.fade-in:nth-child(2) { transition-delay: 80ms; }
+.fade-in:nth-child(3) { transition-delay: 160ms; }
+.fade-in:nth-child(4) { transition-delay: 240ms; }
+.fade-in:nth-child(5) { transition-delay: 320ms; }
+
+/* ─── Smooth scroll offset for fixed nav ─── */
+:target {
+  scroll-margin-top: 80px;
+}
+
+/* ─── Custom scrollbar (webkit) ─── */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+/* ─── Mobile adjustments ─── */
+@media (max-width: 640px) {
+  .hero-glow {
+    width: 400px;
+    height: 300px;
+  }
+  
+  .fade-in:nth-child(n) {
+    transition-delay: 0ms;
+  }
+}
+
+/* ─── Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+  
+  .feature-card:hover {
+    transform: none;
+  }
+}
